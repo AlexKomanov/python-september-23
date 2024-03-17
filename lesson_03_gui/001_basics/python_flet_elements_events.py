@@ -18,10 +18,10 @@ def main(page: ft.Page):
         first_name_input.focus()
         page.update()
 
-    page.add(first_name_input,
+    page.add(ft.Row([ft.Column([first_name_input,
              last_name_input,
              ft.ElevatedButton(text="Print a name", on_click=print_name),
-             blank_text_element)
+             blank_text_element])], alignment=ft.MainAxisAlignment.CENTER))
 
 
 ft.app(target=main)
