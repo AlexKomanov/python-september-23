@@ -32,14 +32,19 @@ def main(page: ft.Page):
     # The validate function is called when input fields change to enable/disable the registration button
     def validate(e):
         pass
-        # Enable the registration button if both username and password fields have values
+        # Enable the registration button if  'username' and 'password' and 'age' fields have values
 
         # Disable the registration button if any field is empty
 
         # Update the page to reflect changes
 
     # UI Elements:
-    # Create various UI elements using Flet library
+    # Create various UI elements using Flet library:
+    # username TextField,
+    # password TextField,
+    # is_admin Checkbox
+    # age TextField
+    # registration Button
 
     # Organize UI elements in rows and columns
 
