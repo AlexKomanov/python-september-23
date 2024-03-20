@@ -11,8 +11,15 @@ def main(page: ft.Page):
 
     page.update()
 
+    def change_theme_mode():
+        return ft.icons.SUNNY if page.theme_mode == "dark" else ft.icons.DARK_MODE
+
+    change_theme_icon = ft.IconButton(icon=change_theme_mode())
+
     page.add(
+        ft.Row([change_theme_icon, ft.Text("Get Weather Of Any City")], alignment=ft.MainAxisAlignment.CENTER),
         ft.Row([input_city], alignment=ft.MainAxisAlignment.CENTER),
+        ft.Row([ft.ElevatedButton(text="Fetch Info")], alignment=ft.MainAxisAlignment.CENTER),
         ft.Row([weather_data], alignment=ft.MainAxisAlignment.CENTER)
 
     )
