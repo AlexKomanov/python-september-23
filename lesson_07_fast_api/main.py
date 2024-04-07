@@ -35,3 +35,31 @@ async def get_single_user(user_id: UUID):
         status_code=status.HTTP_404_NOT_FOUND,
         detail=f"No user with id '{user_id}' was found..."
     )
+
+
+@app.delete("/api/v1/users/{user_id}")
+async def delete_particular_user(user_id: UUID):
+    for single_user in users_db:
+        if single_user.id == user_id:
+            users_db.remove(single_user)
+            return {
+                "message": f"The user with id '{user_id}' was removed..."
+            }
+    raise HTTPException(
+        status_code=status.HTTP_404_NOT_FOUND,
+        detail=f"No user with id '{user_id}' was found..."
+    )
+
+
+# @app.post("/api/v1/users", status_code=status.HTTP_201_CREATED)
+# async def add_new_user(user: User):
+#     users_db.append(user)
+#     return {
+#         "message": "A new user was created!",
+#         "id": user.id
+#     }
+
+@app.post("/api/v1/users")
+async def add_new_user(user: User):
+    users_db.append(user)
+    return {"message": "A new user was created", "id": user.id}
